@@ -1,0 +1,73 @@
+//L001
+//greatest among three number
+public class cond {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 234;
+        int c = 373;
+        if(a>b){
+            //compare a and c
+           if(a>c){
+              System.out.println("a is greater" + a);
+           } else {
+              System.out.println("c is greater " + c);
+           }
+        } else {
+            //compare b and c
+            if(b>c){
+              System.out.println("b is greater " + b);
+            } else {
+              System.out.println("c is greater " + c);
+            }
+        } 
+
+    }
+}
+
+
+// take input
+import java.util.Scanner;
+public class input {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Enter three number");
+        int a = scn.nextInt();
+        int b = scn.nextInt();
+        String s = scn.next();
+        System.out.println("input number is: "+ a);
+        System.out.println("input number is: "+ b);
+        System.out.println("input number is: "+ s);
+
+        // String s = scn.next();
+        // System.out.println("String is: "+s);
+    }
+}
+
+
+//grading system
+import java.util.Scanner;
+public class grading {
+    public static void main(String[] args) {
+       Scanner scn = new Scanner(System.in);
+       int mark = scn.nextInt();
+
+    if(mark<100 && mark>=90){
+       System.out.println("Grade A");
+    }
+    else if(mark>=80){
+       System.out.println("Grade B");
+    }
+    else if(mark>=70){
+       System.out.println("Grade C");
+    }
+    else if(mark>=60){
+       System.out.println("Grade D");
+    }
+    else {
+       System.out.println("Grade E");
+    }
+
+    }
+}
+
