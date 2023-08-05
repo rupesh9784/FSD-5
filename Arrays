@@ -66,6 +66,7 @@
     }
 
 // maximum product of three number
+ //first approach O(nlogn)
 public int maximumProduct(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
@@ -76,6 +77,106 @@ public int maximumProduct(int[] nums) {
         
         if(ans1 > ans2) return ans1;
         else return ans2;
+    }
+
+//******************************************************
+//L005
+// maximum product of three number
+ //second approach O(n^3)
+public int maximumProduct(int[] nums) {
+        int n = nums.length;
+        int ans = Integer.MIN_VALUE;
+        for(int i = 0; i<n-2; i++){
+            for(int j = i+1; j<n-1; j++){
+                for(int k = j+1; k<n; k++){
+                    int p = nums[i] * nums[j] * nums[k];
+                   if(p > ans) ans = p; 
+                }
+            }
+        }
+        return ans;
+    }
+// maximum product of three number
+ //third approach O(n)
+ public int maximumProduct(int[] nums) {
+       int max1 = Integer.MIN_VALUE , max2 = Integer.MIN_VALUE , max3 = Integer.MIN_VALUE;
+       int min1 = Integer.MAX_VALUE , min2 = Integer.MAx_VALUE;
+        
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i] > max1){
+                max3 = max2;
+                max2 = max1;
+                max1 = nums[i];
+            } else if(nums[i] > max2){
+                max3 = max2;
+                max2 = nums[i];
+            } else if(nums[i] > max3){
+                max3 = nums[i];
+            }
+            
+            if(nums[i] < min1){
+                min2 = min1;
+                min1 = nums[i];
+            } else if(nums[i] < min2){
+                min2 = nums[i];
+            }
+                 
+        }
+        int ans1 = min1 * min2 * max1;
+        int ans2 = max1 * max2 * max3;
+        if(ans1 > ans2) return ans1;
+        else return ans2;
+    }
+
+
+//Print all SubArrays
+public static void main(String[] args) {
+        int[] arr = {10 , 20 ,30 ,40 , 50};
+        int n = arr.length;
+        for(int si = 0; si<n; si++){
+            for(int ei = si; ei<n; ei++){
+                for(int k = si; k<=ei; k++){
+                    System.out.print(arr[k]+" ");
+                }
+                System.out.println();
+            }
+        }
+    }
+
+//maxSubArray
+//approach 1  O(N^3)
+public int maxSubArray(int[] nums) {
+        int n = nums.length;
+        int msum = nums[0];
+        for(int si = 0; si<n; si++){
+            for(int ei = si; ei<n; ei++){
+                int s = 0;
+                for(int k = si; k<=ei; k++){
+                    s += nums[k];
+                }
+                
+                if(s > msum) msum = s;
+            }
+            
+        }
+        return msum;
+    }
+//approach 2 O(n) // kadane's algorithm
+public int maxSubArray(int[] nums) {
+        int ans = nums[0];
+        int energy = 0;
+        for(int i =0; i<nums.length; i++){
+            
+            if(energy >0 ){
+                energy = energy + nums[i]; 
+            } else {
+                energy = nums[i];
+            }
+            
+            if(energy > ans) ans = energy;
+            
+        }
+        return ans;
     }
 
 
