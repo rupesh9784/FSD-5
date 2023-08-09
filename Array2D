@@ -1,0 +1,132 @@
+
+//L002
+//diagonal sum
+//approach 1
+ public int diagonalSum(int[][] mat) {
+        int s = 0;
+        int n = mat.length;
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<n; j++){
+                if(i==j || (i+j == n-1)){
+                    s += mat[i][j];
+                }
+            }
+        }
+        return s;
+  }
+
+//approach 2
+public int diagonalSum(int[][] mat) {
+        int n = mat.length;
+        int s = 0;
+        for(int k = 0; k<n; k++){
+            s = s + mat[k][k] + mat[k][n-1-k];
+        }
+        if(n%2 == 1){
+            s = s - mat[n/2][n/2];
+        }
+        return s;
+    }
+//transpose a matrix
+//solution1
+public int[][] transpose(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][] ans = new int[m][n];
+        
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<m; j++){
+                ans[j][i] = matrix[i][j];
+            }
+        }
+        return ans;
+    }
+
+//solution2
+ public void transpose(int n,int a[][])
+    {
+       for( int i = 0; i<n; i++){
+           for(int j = 0; j<i; j++){
+               int t = a[i][j];
+               a[i][j] = a[j][i];
+               a[j][i] = t;
+           }
+       }
+    }
+//identical matrix
+  public int areMatricesIdentical(int N, int[][] Grid1, int[][] Grid2) {
+        // code here
+        for(int i = 0; i<N; i++){
+            for(int j = 0; j<N; j++){
+                
+                if(Grid1[i][j] != Grid2[i][j]){
+                    return 0;
+                }
+            }
+        }
+        return 1;
+        
+    }
+
+//rotate an array by 90 degree
+//approach 1
+public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        transpose(n , matrix); //call
+        for(int i = 0; i<n; i++){
+            int left = 0;
+            int right = n-1;
+            while(left<right){
+                int t = arr[i][left];
+                arr[i][left] = arr[i][right];
+                arr[i][right] = t;
+                left++;
+                right--;
+            }
+        }
+        
+    }
+     public void transpose(int n,int a[][]) {
+       for( int i = 0; i<n; i++){
+           for(int j = 0; j<i; j++){
+               int t = a[i][j];
+               a[i][j] = a[j][i];
+               a[j][i] = t;
+           }
+       }
+    }
+
+//approach 2
+  public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        transpose(n , matrix); //call
+        for(int[] a : matrix){
+            reverse(a);
+        }
+        
+    }
+ //reverse an array
+ public void reverse(int[] arr){
+        int left = 0;
+        int right = arr.length-1;
+        while(left<right){
+            int t = arr[left];
+            arr[left] = arr[right];
+            arr[right] = t;
+            left++;
+            right--;
+        }  
+    }
+//transpose
+     public void transpose(int n,int a[][]) {
+       for( int i = 0; i<n; i++){
+           for(int j = 0; j<i; j++){
+               int t = a[i][j];
+               a[i][j] = a[j][i];
+               a[j][i] = t;
+           }
+       }
+    }
+
+
+
