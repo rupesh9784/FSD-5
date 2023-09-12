@@ -1,0 +1,218 @@
+//L001
+//Program1
+class Person{
+  String name;
+  int age;
+  long mn;
+}
+
+public class L001_1 {
+    public static void game1(Person p1 , Person p2){
+        Person temp = p1;
+        p1 = p2;
+        p2 = temp;
+    }
+    public static void game2(Person p1 , Person p2){
+        String temp1 = p1.name;
+        p1.name = p2.name;
+        p2.name = temp1;
+        
+        int temp2 = p1.age;
+        p1.age = p2.age;
+        p2.age = temp2;
+    }
+    public static void game3(Person p1 , Person p2){
+        String temp1 = p1.name;
+        p1.name = p2.name;
+        p2.name = temp1;
+        p2 = new Person();  
+        int temp2 = p1.age;
+        p1.age = p2.age;
+        p2.age = temp2;
+    }
+    public static void game4(Person p1 , Person p2){
+        p1 = new Person();  
+        p2 = new Person();  
+        String temp1 = p1.name;
+        p1.name = p2.name;
+        p2.name = temp1;
+        int temp2 = p1.age;
+        p1.age = p2.age;
+        p2.age = temp2;
+    }
+    public static void main(String[] args) {
+        Person p1 = new Person();
+        p1.name = "ajay";
+        p1.age = 22;
+        p1.mn = 9328339287L; 
+        Person p2 = new Person();
+        p2.name = "aman";
+        p2.age = 25;
+        p2.mn = 9344533557L;
+        System.out.println(p1.name +" " + p1.age+" "+p1.mn);
+        System.out.println(p2.name +" " + p2.age+" "+p2.mn);
+        game3(p1 , p2);
+        System.out.println(p1.name +" " + p1.age+" "+p1.mn);
+        System.out.println(p2.name +" " + p2.age+" "+p2.mn);
+    } 
+}
+
+//program2
+
+class Person{
+    String name;
+    int age;
+    public void formFill(String n , int a){
+      System.out.println("My name is: "+ n);
+      System.out.println("My age is: "+ a);
+
+    }
+    public void greet(){
+        System.out.println("Hi....greet1");
+    }
+    public void greet(String n){
+        System.out.println("Hi....greet2");
+    }
+    public void greet(int a){
+        System.out.println("Hi....greet3");
+    }
+    public void greet(int a,int b){
+        System.out.println("Hi....greet4");
+    }
+    public void walk(){
+        System.out.println("I am walking....");
+    }
+}
+
+public class L001_2 {
+    public static void main(String[] args) {
+        Person p1 = new Person();
+        // p1.greet();
+        p1.greet(25);
+        p1.walk();
+        p1.formFill("aman", 25);
+    }
+}
+
+//************************************8
+
+//L002
+
+//program1
+class Rectangle{
+    int length;
+    int width;
+    Rectangle(){ //non parametrized constructor
+      System.out.println("I am a non parametrized constructor ");
+      length = 10;
+      width = 20;
+    }
+    Rectangle(int l , int w){ // parametrized constructor
+      System.out.println("I am a parametrized constructor ");
+      length = l;
+      width = w;
+    }
+
+    public int area(){
+        return length*width;
+    }
+    public int perimeter(){
+        return 2*(length+width);
+    }
+}
+public class L002_1 {
+    public static void main(String[] args) {
+        
+        // Rectangle obj1 = new Rectangle();
+        // obj1.length = 10;
+        // obj1.width = 20;
+        // int val = obj1.area();
+        // System.out.println(val);
+        // int val2 = obj1.perimeter();
+        // System.out.println(val2);
+        Rectangle a1 = new Rectangle();
+        System.out.println(a1.area());
+        Rectangle a2 = new Rectangle(20,30);
+        System.out.println(a2.area());
+    }
+}
+
+//program2
+class Student{
+ String name;
+ int rollNumber;
+ int marks;
+
+    Student(String name , int rollNumber , int marks){
+        System.out.println("Constructor top string ,roll , mark");
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+    Student(String name ){
+        this("abc" , 23,78);
+        System.out.println("Constructor 1 string");
+        this.name = name;
+        
+    }
+    Student(int marks){
+        System.out.println("Constructor 2 marks");
+        this.marks = marks;
+    }
+
+    public void display(){
+        System.out.println(name);
+
+        if(marks<0 || marks > 100) {
+            System.out.println("Invalid marks");
+        } else if(marks >= 90){
+            System.out.println("Grade A");
+        } else if(marks >= 80){
+            System.out.println("Grade B");
+        } else if(marks >= 70){
+            System.out.println("Grade C");
+        } else if(marks >= 60){
+            System.out.println("Grade D");
+        } else {
+            System.out.println("Grade E");
+        }
+    }
+}
+public class L002_2 {
+    public static void main(String[] args) {
+        Student s1 = new Student("pratham");
+        // s1.display();
+    }
+}
+
+//program3
+
+class A{
+ private int x;
+ private int y;
+
+ public void setX(int a){
+    x = a;
+ }
+ public void setY(int a){
+    y = a;
+ }
+ public int getX(){
+    return x;
+ }
+ public int getY(){
+    return y;
+ }
+
+}
+
+public class L002_3 {
+    public static void main(String[] args) {
+        A obj1 = new A();
+        obj1.setX(100);
+        System.out.println(obj1.getX());
+    }
+}
+
+
+
