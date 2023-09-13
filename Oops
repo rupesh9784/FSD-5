@@ -214,5 +214,115 @@ public class L002_3 {
     }
 }
 
+//L003
+//program1
+class BankAccount{
+  long accountNumber;
+  private int balance;
+  private int password;
 
+   BankAccount(long ac ,int bal,int pass){
+    accountNumber = ac;
+    balance = bal;
+    password = pass;
+   }
+
+  public void deposit(int depBal){
+    balance = balance + depBal;
+  }
+
+  public void withDraw(int witBal,int pin){
+    if(password != pin){
+        System.out.println("Invalid Password");
+        return;       
+    }
+    
+    if(witBal > balance){
+        System.out.println("Insufficent amount");
+    } else {
+        balance = balance - witBal;
+    }
+}
+public void getBalance(int pin){
+    if(password == pin){
+          System.out.println("Available balance is: "+balance);   
+      } else {
+          System.out.println("Invalid Password");
+      }     
+  }
+
+}
+
+public class L003_1 {
+    public static void main(String[] args) {
+        BankAccount b1 = new BankAccount(124839874,10000, 1234);
+        // b1.getBalance(1234);
+        b1.withDraw(8000, 1234);
+        // b1.getBalance(1234);
+        b1.deposit(5000);
+        b1.withDraw(8000, 1234);
+        b1.getBalance(1234);
+    }
+}
+
+//program2
+
+class Parent{
+    private int x;
+    private int y;
+    Parent(){
+        System.out.println("I am parent const 1");
+    }
+    Parent(int v1){
+        System.out.println("I am parent const 2");
+        x = v1;
+    }
+    Parent(int v1, int v2){
+        System.out.println("I am parent const 3");
+        x = v1;
+        y = v2;
+    }
+
+    public int getX(){
+      return x;
+    }
+    public int getY(){
+      return y;
+    }
+    public void setX(int val){
+      x = val;
+    }
+    public void setY(int val){
+     y = val;
+    }
+}
+class Child extends Parent{
+  int z;
+  Child(){
+        System.out.println("I am child const 1");
+    }
+  Child(int v1){
+        System.out.println("I am child const 2");
+    }
+  Child(int v1 , int v2){
+       super(v1,v2); 
+        System.out.println("I am child const 3");
+    }
+  public int getZ(){
+      return z;
+    }
+    public void setZ(int val){
+      z = val;
+    }
+
+}
+
+public class L003_2 {
+    public static void main(String[] args) {
+        //  Parent p1 = new Parent();
+         Child c1 = new Child(10,20);
+       
+
+    }
+}
 
