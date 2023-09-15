@@ -427,4 +427,152 @@ public class L004_3 {
     }
 }
 
+//*****************************************8
+//L005
+//p1
+
+interface Playable{
+    void play();
+}
+
+class Guitar implements Playable{  
+   public void play(){
+        System.out.println("play Guitar....");
+    }
+}
+class Piano implements Playable{
+   @Override
+   public void play(){
+        System.out.println("play Piano....");
+    }
+}
+public class L005_1 {
+    public static void main(String[] args) {
+        Guitar g = new Guitar();
+        g.play();
+        Piano p = new Piano();
+        p.play();
+        Playable p1 = new Guitar();
+        p1.play();
+        Playable p2 = new Piano();
+        p2.play();
+    }
+}
+
+//p2
+
+interface Animal4{
+    void eat();
+    void sleep();
+}
+interface WildAnimal extends Animal4{
+   public void roamInJungle();
+}
+class Lion implements WildAnimal{
+    public void eat(){
+        System.out.println("Lion eat..");
+    }
+    public void sleep(){
+        System.out.println("Lion sleep..");
+    }
+    public void roamInJungle(){
+      System.out.println("jungle me ghumna...");
+   }
+}
+class Elephant implements Animal4{
+    @Override
+    public void eat(){
+        System.out.println("Elephant eat..");
+    }
+    @Override
+    public void sleep(){
+        System.out.println("Elephant sleep..");
+    }
+}
+
+public class L005_2 {
+    public static void main(String[] args) {
+        Animal4 a1 = new Elephant();
+        a1.eat();
+        WildAnimal a2 = new Lion();
+        a2.eat();
+        a2.sleep();
+        a2.roamInJungle();
+    }
+}
+
+//p3
+
+interface Person3{
+   public void introduce();
+
+   default void defaultMethod(){
+     System.out.println("This is Default Method");
+   }
+}
+class Student3 implements Person3{
+    @Override
+  public void introduce(){
+    System.out.println("I am student");
+  }
+   @Override
+   public void defaultMethod(){
+     System.out.println("This is Default Method of student");
+   }
+   public void meth3(){
+    System.out.println("This is meth2");
+   }
+}
+
+public class L005_3 {
+    public static void main(String[] args) {
+        Person3 p1 = new Student3();
+        p1.defaultMethod();
+        p1.introduce();
+        
+    }
+}
+
+//p4
+
+interface Shape{
+    double PI = 3.141825;
+    public double area(double r);
+}
+class Circle implements Shape{
+    public double area(double rad){
+        return PI * rad * rad;
+    }
+}
+
+public class L005_4 {
+    public static void main(String[] args) {
+        Shape c1 = new Circle();
+        double ans = c1.area(5.3);
+        System.out.println(ans);     
+    }
+}
+
+//p5
+class Outer{
+      public void display(){
+            System.out.println("I am Outer class");
+      }
+     class Inner{
+         public void display(){
+            System.out.println("I am Inner class");
+         }
+     }
+}
+
+public class L005_5 {
+    public static void main(String[] args) {
+        Outer c1 = new Outer();
+        c1.display();
+       Outer.Inner c2 = c1.new Inner();
+       c2.display();
+
+    }
+}
+
 
